@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div class="rick" style="width: 300px; height: 200px; background-size: 100%  100%">
+		<h1 class="hp_r"></h1>
+		<h1 >Атака <span class="att_r"></span></h1>
+	</div>
+	<div class="enemy" style="width: 300px; height: 200px; background-size: 100%  100%">
+		<h1 class="hp_e"></h1>
+		<h1 >Атака <span class="att_e"></span></h1>
+	</div>
+	<script type="">
+	// Если у Рика меньше жизни, то он исчезает. После этого поставь на врага проверку тоже
+
+	let rick = document.querySelector(".rick");
+	let enemy = document.querySelector(".enemy");
+
+	let hp_r = document.querySelector(".hp_r");
+	let hp_e = document.querySelector(".hp_e");
+
+	let att_r = document.querySelector(".att_r");
+	let att_e = document.querySelector(".att_e");
+
+	let getRandom = function(){ //функция для random
+        let rand = Math.random() * 40;
+        let round = Math.round(rand);
+        return round;
+      }
+
+	let user = {
+		name : "Rick",
+		url : "url(rick.png)",
+		hp : 100,
+		dmg : getRandom(),
+	}
+
+	let user2 = {
+		name : "Enemy",
+		url : "url(enem.jpg)",
+		hp : 100,
+		dmg : getRandom(),
+	}
+
+
+	setTimeout(attack, 2000)
+
+	function attack() {
+		user2.hp = user2.hp - user.dmg;
+		hp_e.innerHTML = user2.hp;
+		user.hp = user.hp - user2.dmg;
+		hp_r.innerHTML = user.hp;
+
+		if (user.hp < user2.hp) {
+			rick.style.opacity = "0";
+		}
+		if (user2.hp < user.hp) {
+			enemy.style.opacity = "0";
+		}
+	}
+
+
+
+
+
+
+	rick.style.backgroundImage = user.url;
+	enemy.style.backgroundImage = user2.url;
+
+	hp_r.innerHTML = user.hp;
+	hp_e.innerHTML = user2.hp;
+
+	att_r.innerHTML = user.dmg;
+	att_e.innerHTML = user2.dmg;
+
+
+
+		/* Навигация 
+		Что я сделаю сегодня?
+
+		А зачем мне эти объекты?
+
+		Где я мог использовать объекты?
+
+		А какие объекты у меня могли быть в коде?
+
+		Когда я узнаю другие встроенные объекты?
+
+		А зачем мне создавать объекты?
+
+		Можно ли изменить ключ объекта функцией с «return»? */
+
+</script>
+</body>
+</html>
+
+
+
